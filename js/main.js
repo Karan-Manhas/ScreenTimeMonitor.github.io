@@ -106,73 +106,67 @@ function generateCharts() {
     const screenTimeData = [4, 5, 6, 7, 3, 2, 1]; // Random data for demonstration
     const breakFrequencyData = [2, 3, 4, 3, 4, 2, 5]; // Random data for demonstration
     const healthImpactData = [1, 2, 3, 4, 2, 3, 1]; // Random data for demonstration
-    console.log(document.getElementById('screenTimeChart'));
-    const ctx1 = document.getElementById('screenTimeChart').getContext('2d');
-    console.log(document.getElementById('breakFrequencyChart'));
-    const ctx2 = document.getElementById('breakFrequencyChart').getContext('2d');
-    console.log(document.getElementById('healthImpactChart'));
-    const ctx3 = document.getElementById('healthImpactChart').getContext('2d');
+    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-    new Chart(ctx1, {
+    // Generate Screen Time Chart
+    const screenTimeChart = {
+        x: daysOfWeek,
+        y: screenTimeData,
         type: 'bar',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: 'Screen Time (hours)',
-                data: screenTimeData,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        name: 'Screen Time (hours)',
+        marker: {
+            color: 'rgba(75, 192, 192, 0.2)',
+            line: {
+                color: 'rgba(75, 192, 192, 1)',
+                width: 1
             }
         }
-    });
+    };
 
-    new Chart(ctx2, {
+    // Generate Break Frequency Chart
+    const breakFrequencyChart = {
+        x: daysOfWeek,
+        y: breakFrequencyData,
         type: 'bar',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: 'Break Frequency',
-                data: breakFrequencyData,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        name: 'Break Frequency',
+        marker: {
+            color: 'rgba(54, 162, 235, 0.2)',
+            line: {
+                color: 'rgba(54, 162, 235, 1)',
+                width: 1
             }
         }
-    });
+    };
 
-    new Chart(ctx3, {
+    // Generate Health Impact Chart
+    const healthImpactChart = {
+        x: daysOfWeek,
+        y: healthImpactData,
         type: 'bar',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [{
-                label: 'Health Impact (severity)',
-                data: healthImpactData,
-                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                borderColor: 'rgba(255, 206, 86, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+        name: 'Health Impact (severity)',
+        marker: {
+            color: 'rgba(255, 206, 86, 0.2)',
+            line: {
+                color: 'rgba(255, 206, 86, 1)',
+                width: 1
             }
         }
-    });
+    };
+
+    // Define layout
+    const layout = {
+        barmode: 'group',
+        title: 'Weekly Report',
+        xaxis: {
+            title: 'Day of Week'
+        },
+        yaxis: {
+            title: 'Value'
+        }
+    };
+
+    // Plot charts
+    Plotly.newPlot('screenTimeChart', [screenTimeChart], layout);
+    Plotly.newPlot('breakFrequencyChart', [breakFrequencyChart], layout);
+    Plotly.newPlot('healthImpactChart', [healthImpactChart], layout);
 }
