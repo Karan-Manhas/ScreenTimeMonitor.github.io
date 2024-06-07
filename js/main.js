@@ -79,26 +79,41 @@ function visualCue() {
 }
 
 function weeklyReport() {
+    // Create div elements for the charts
+    const reportDiv = document.getElementById('report');
+    reportDiv.innerHTML = `
+        <h2>Screen Time Usage</h2>
+        <div id="screenTimeChart"></div>
+        
+        <h2>Break Frequency</h2>
+        <div id="breakFrequencyChart"></div>
+        
+        <h2>Health Impact</h2>
+        <div id="healthImpactChart"></div>
+    `;
+
     const reminderSettings = JSON.parse(localStorage.getItem('reminderSettings')) || {};
     const healthSymptoms = JSON.parse(localStorage.getItem('healthSymptoms')) || {};
     const dailyLimit = JSON.parse(localStorage.getItem('dailyLimit')) || {};
 
-    document.getElementById('report').innerHTML = `
-        <h2>Reminder Settings</h2>
-        <p>Interval: ${reminderSettings.interval || 'Not set'}</p>
-        <p>Notification Types: ${(reminderSettings.notificationTypes || []).join(', ') || 'None'}</p>
-        
-        <h2>Health Symptoms</h2>
-        <p>Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
-        <p>Severity: ${healthSymptoms.severity || 'Not set'}</p>
-        
-        <h2>Daily Limit</h2>
-        <p>Daily Limit: ${dailyLimit.dailyLimit || 'Not set'}</p>
-        <p>Notify: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
-    `;
     // Delay chart generation to ensure DOM is fully updated
     setTimeout(() => {
+        // Generate charts
         generateCharts();
+        // Populate other report sections
+        reportDiv.innerHTML += `
+            <h3>Reminder Settings</h3>
+            <p>Interval: ${reminderSettings.interval || 'Not set'}</p>
+            <p>Notification Types: ${(reminderSettings.notificationTypes || []).join(', ') || 'None'}</p>
+            
+            <h3>Health Symptoms</h3>
+            <p>Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
+            <p>Severity: ${healthSymptoms.severity || 'Not set'}</p>
+            
+            <h3>Daily Limit</h3>
+            <p>Daily Limit: ${dailyLimit.dailyLimit || 'Not set'}</p>
+            <p>Notify: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
+        `;
     }, 100);
 }
 
