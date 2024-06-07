@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(event.target.getAttribute('data-page'));
         }
     });
+
+    // Call generateCharts after the DOM is fully loaded
+    generateCharts();
 });
 
 function loadPage(page) {
