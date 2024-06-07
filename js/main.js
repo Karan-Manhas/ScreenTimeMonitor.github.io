@@ -103,9 +103,11 @@ function generateCharts() {
     const screenTimeData = [4, 5, 6, 7, 3, 2, 1]; // Random data for demonstration
     const breakFrequencyData = [2, 3, 4, 3, 4, 2, 5]; // Random data for demonstration
     const healthImpactData = [1, 2, 3, 4, 2, 3, 1]; // Random data for demonstration
-
+    console.log(document.getElementById('screenTimeChart'));
     const ctx1 = document.getElementById('screenTimeChart').getContext('2d');
+    console.log(document.getElementById('breakFrequencyChart'));
     const ctx2 = document.getElementById('breakFrequencyChart').getContext('2d');
+    console.log(document.getElementById('healthImpactChart'));
     const ctx3 = document.getElementById('healthImpactChart').getContext('2d');
 
     new Chart(ctx1, {
