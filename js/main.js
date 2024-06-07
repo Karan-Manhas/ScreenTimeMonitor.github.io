@@ -93,8 +93,10 @@ function weeklyReport() {
         <p>Daily Limit: ${dailyLimit.dailyLimit || 'Not set'}</p>
         <p>Notify: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
     `;
-
-    generateCharts();
+    // Delay chart generation to ensure DOM is fully updated
+    setTimeout(() => {
+        generateCharts();
+    }, 100);
 }
 
 function generateCharts() {
