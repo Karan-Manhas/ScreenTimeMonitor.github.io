@@ -111,7 +111,7 @@ button:hover {
 }
 
 
-.checkbox-container {
+/* .checkbox-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -119,7 +119,7 @@ button:hover {
 
 .checkbox-container label {
     margin-bottom: 10px;
-}
+} */
 
 .centered-labels {
     display: flex;
@@ -127,4 +127,19 @@ button:hover {
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.checkbox-container label input {
+    margin-right: 5px;
 }
