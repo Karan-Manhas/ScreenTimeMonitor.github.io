@@ -145,3 +145,8 @@ button:hover {
     font-size: 0.9em;
     color: #666;
 }
+
+/* Ensure slider goes all the way to the left */
+.slider {
+    margin-left: 0;
+}
