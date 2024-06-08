@@ -127,3 +127,21 @@ button:hover {
 .checkbox-container label {
     margin-bottom: 10px;
 }
+
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-item {
+    margin-bottom: 20px;
+}
+
+.slider-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #666;
+}
