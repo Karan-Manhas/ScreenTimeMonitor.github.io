@@ -18,10 +18,16 @@ body {
 }
 
 /* Heading styles */
-h1, h2 {
+h1{
     color: #333;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+h2{
+    color: #02cff8;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 /* Form elements */
