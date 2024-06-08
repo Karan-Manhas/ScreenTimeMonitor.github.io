@@ -156,7 +156,7 @@ function weeklyReport() {
         <h2>Health Impact</h2>
         <div id="healthImpactChart"></div>
         
-        <h2>Feedback</h2>
+        <h2>Feedback and Strategy Suggestions</h2>
         <div id="feedback"></div>
     `;
 
