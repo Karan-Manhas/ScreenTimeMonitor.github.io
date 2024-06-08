@@ -113,17 +113,12 @@ button:hover {
 
 .checkbox-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 }
 
 .checkbox-container label {
-    display: flex;
-    align-items: center; /* Center items vertically */
-    margin-bottom: 5px;
-}
-
-.checkbox-container label input {
-    margin-right: 5px; /* Add spacing between checkbox and label */
+    margin-bottom: 10px;
 }
 
 .centered-labels {
