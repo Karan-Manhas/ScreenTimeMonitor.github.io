@@ -1,9 +1,18 @@
 <h1>Log Health Symptoms</h1>
+<h2>Select all the current Health Symptoms</h2>
+<div class="checkbox-container">
 <label><input type="checkbox" name="symptom" value="eye-strain"> Eye Strain</label>
 <label><input type="checkbox" name="symptom" value="headaches"> Headaches</label>
 <label><input type="checkbox" name="symptom" value="anxiety"> Anxiety</label>
+</div>
 <br>
-<label for="severity">Severity Scale (1 being not severe at all - 10 being extremely severe):</label> <!-- Added label for severity scale -->
+<h2>Severity Slider</h2>
+<h3>Severity Slider for Eye Strain</h3>
+<label for="severity">1 being not severe at all - 10 being extremely severe:</label> <!-- Added label for severity scale -->
+<input type="range" id="severity" class="slider" min="1" max="10">
+<h3>Severity Slider for Headaches</h3>
+<input type="range" id="severity" class="slider" min="1" max="10">
+<h3>Severity Slider for Anxiety</h3>
 <input type="range" id="severity" class="slider" min="1" max="10">
 <button id="save-symptoms">Save</button>
 <nav>
