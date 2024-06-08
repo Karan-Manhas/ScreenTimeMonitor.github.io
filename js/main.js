@@ -105,9 +105,7 @@ function provideSuggestions(symptoms) {
         suggestions = 'Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state recently.';
     }
 
-    if (suggestions) {
-        alert(suggestions);
-    }
+    return suggestions;
 }
 
 function setDailyLimit() {
@@ -146,6 +144,9 @@ function weeklyReport() {
         
         <h2>Health Impact</h2>
         <div id="healthImpactChart"></div>
+        
+        <h2>Feedback</h2>
+        <div id="feedback"></div>
     `;
 
     const reminderSettings = JSON.parse(localStorage.getItem('reminderSettings')) || {};
@@ -174,8 +175,15 @@ function weeklyReport() {
             <p>Daily Limit: ${dailyLimit.dailyLimit || 'Not set'}</p>
             <p>Notify: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
         `;
+
+        // Generate feedback
+        const feedbackDiv = document.getElementById('feedback');
+        const suggestions = provideSuggestions(healthSymptoms.symptoms || []);
+        feedbackDiv.innerHTML = `<p>${suggestions || 'No specific suggestions at this time.'}</p>`;
     }, 100);
 }
+
+
 
 function generateCharts(yAxisTitles) {
     const screenTimeData = [4, 5, 6, 7, 3, 2, 1]; // Random data for demonstration
