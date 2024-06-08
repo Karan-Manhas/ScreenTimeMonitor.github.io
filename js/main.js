@@ -169,12 +169,12 @@ function weeklyReport() {
             <p>Notification Types: ${(reminderSettings.notificationTypes || []).join(', ') || 'None'}</p>
             
             <h3>Health Symptoms</h3>
-            <p>Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
+            <p>Key Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
             <p>Severity: ${JSON.stringify(healthSymptoms.severity) || 'Not set'}</p>
             
-            <h3>Daily Limit (hh:mm) </h3>
+            <h3>Screen Usage Limit per Day </h3>
             <p>Maximum Daily Limit(hh:mm): ${dailyLimit.dailyLimit || 'Not set'}</p>
-            <p>Notify: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
+            <p>Notify once usage is done?: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
         `;
 
         // Generate feedback
