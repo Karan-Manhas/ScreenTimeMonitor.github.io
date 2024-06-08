@@ -35,14 +35,30 @@ function initPage(page) {
 }
 
 function setupReminders() {
+    const intervalSelect = document.getElementById('interval');
+    const customIntervalInput = document.getElementById('custom-interval');
+
+    intervalSelect.addEventListener('change', () => {
+        if (intervalSelect.value === 'Custom') {
+            customIntervalInput.disabled = false;
+        } else {
+            customIntervalInput.disabled = true;
+            customIntervalInput.value = '';
+        }
+    });
+
     document.getElementById('save-reminders').addEventListener('click', () => {
-        let interval = document.getElementById('interval').value;
-        const customInterval = document.getElementById('custom-interval').value;
+        let interval = intervalSelect.value;
+        const customInterval = customIntervalInput.value;
         const soundAlert = document.getElementById('sound-alert').value;
         const notificationTypes = Array.from(document.querySelectorAll('input[name="notification-type"]:checked')).map(cb => cb.value);
 
-        // Use custom interval if provided
-        if (customInterval && customInterval > 0 && customInterval <= 60) {
+        // Validate custom interval
+        if (interval === 'Custom') {
+            if (!customInterval || customInterval <= 0 || customInterval > 60) {
+                alert('Please enter a valid custom interval between 1 and 60 minutes.');
+                return;
+            }
             interval = customInterval;
         }
 
