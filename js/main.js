@@ -211,7 +211,7 @@ function generateCharts(yAxisTitles) {
     const breakFrequencyChart = {
         x: daysOfWeek,
         y: breakFrequencyData,
-        type: 'bar',
+        type: 'line',
         name: 'Break Frequency',
         marker: {
             color: 'rgba(54, 162, 235, 0.2)',
