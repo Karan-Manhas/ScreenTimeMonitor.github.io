@@ -109,3 +109,14 @@ button:hover {
     box-sizing: border-box;
     border-radius: 8px;
 }
+
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkbox-container label {
+    margin-bottom: 10px;
+}
