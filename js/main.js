@@ -129,7 +129,7 @@ function weeklyReport() {
         generateCharts({
             screenTimeChart: 'Active Screen Time (hours)',
             breakFrequencyChart: 'Number of Breaks Taken',
-            healthImpactChart: 'Severity Reduction Points'
+            healthImpactChart: 'Severity Rating'
         });
         // Populate other report sections
         reportDiv.innerHTML += `
