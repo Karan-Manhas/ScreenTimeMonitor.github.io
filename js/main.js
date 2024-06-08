@@ -186,6 +186,9 @@ function weeklyReport() {
             <h3>Screen Usage Limit per Day </h3>
             <p>Maximum Daily Limit(hh:mm): ${dailyLimit.dailyLimit || 'Not set'}</p>
             <p>Notify once usage is done?: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
+        <nav>
+    <button data-page="setup-reminders">Start Over</button>
+        </nav>
         `;
 
         // Generate feedback
