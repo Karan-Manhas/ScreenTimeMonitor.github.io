@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generateCharts({
         screenTimeChart: 'Active Screen Time (hours)',
         breakFrequencyChart: 'Number of Breaks Taken',
-        healthImpactChart: 'Severity Rating'
+        healthImpactChart: 'Severity Reduction Points'
     });
 });
 
@@ -74,11 +74,40 @@ function setupReminders() {
 function logHealthSymptoms() {
     document.getElementById('save-symptoms').addEventListener('click', () => {
         const symptoms = Array.from(document.querySelectorAll('input[name="symptom"]:checked')).map(cb => cb.value);
-        const severity = document.getElementById('severity').value;
+
+        // Get the severity values, with null checks
+        const severityEyeStrainElement = document.getElementById('severity-eye-strain');
+        const severityHeadachesElement = document.getElementById('severity-headaches');
+        const severityAnxietyElement = document.getElementById('severity-anxiety');
+
+        const severity = {
+            eyeStrain: severityEyeStrainElement ? severityEyeStrainElement.value : null,
+            headaches: severityHeadachesElement ? severityHeadachesElement.value : null,
+            anxiety: severityAnxietyElement ? severityAnxietyElement.value : null
+        };
 
         localStorage.setItem('healthSymptoms', JSON.stringify({ symptoms, severity }));
+        provideSuggestions(symptoms);
         alert('Symptoms logged!');
     });
+}
+
+function provideSuggestions(symptoms) {
+    let suggestions = '';
+
+    if (symptoms.includes('headaches') && symptoms.includes('anxiety') && symptoms.includes('eye-strain')) {
+        suggestions = 'Try increasing screen limit.';
+    } else if (symptoms.includes('eye-strain') && !symptoms.includes('headaches') && !symptoms.includes('anxiety')) {
+        suggestions = 'Try using Blue light glasses to reduce eye strain.';
+    } else if (symptoms.includes('headaches') && !symptoms.includes('eye-strain') && !symptoms.includes('anxiety')) {
+        suggestions = 'Suggest doing the 20/20/20 test. Every 20 minutes or so, look into the distance (about 20 feet) for 20 seconds.';
+    } else if (symptoms.includes('anxiety') && !symptoms.includes('eye-strain') && !symptoms.includes('headaches')) {
+        suggestions = 'Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state recently.';
+    }
+
+    if (suggestions) {
+        alert(suggestions);
+    }
 }
 
 function setDailyLimit() {
@@ -129,7 +158,7 @@ function weeklyReport() {
         generateCharts({
             screenTimeChart: 'Active Screen Time (hours)',
             breakFrequencyChart: 'Number of Breaks Taken',
-            healthImpactChart: 'Severity Rating'
+            healthImpactChart: 'Severity Reduction Points'
         });
         // Populate other report sections
         reportDiv.innerHTML += `
@@ -139,7 +168,7 @@ function weeklyReport() {
             
             <h3>Health Symptoms</h3>
             <p>Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
-            <p>Severity: ${healthSymptoms.severity || 'Not set'}</p>
+            <p>Severity: ${JSON.stringify(healthSymptoms.severity) || 'Not set'}</p>
             
             <h3>Daily Limit</h3>
             <p>Daily Limit: ${dailyLimit.dailyLimit || 'Not set'}</p>
