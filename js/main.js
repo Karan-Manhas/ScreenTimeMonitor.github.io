@@ -96,13 +96,13 @@ function provideSuggestions(symptoms) {
     let suggestions = '';
 
     if (symptoms.includes('headaches') && symptoms.includes('anxiety') && symptoms.includes('eye-strain')) {
-        suggestions = 'Try increasing screen limit.';
+        suggestions = 'Try increasing screen limit this week.';
     } else if (symptoms.includes('eye-strain') && !symptoms.includes('headaches') && !symptoms.includes('anxiety')) {
-        suggestions = 'Try using Blue light glasses to reduce eye strain.';
+        suggestions = 'Try using Blue light glasses to reduce eye strain, this should help alleviate the severity.';
     } else if (symptoms.includes('headaches') && !symptoms.includes('eye-strain') && !symptoms.includes('anxiety')) {
         suggestions = 'Suggest doing the 20/20/20 test. Every 20 minutes or so, look into the distance (about 20 feet) for 20 seconds.';
     } else if (symptoms.includes('anxiety') && !symptoms.includes('eye-strain') && !symptoms.includes('headaches')) {
-        suggestions = 'Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state recently.';
+        suggestions = 'Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state negatively recently.';
     }
 
     return suggestions;
@@ -165,15 +165,15 @@ function weeklyReport() {
         reportDiv.innerHTML += `
             <h2>Settings Review</h2>
             <h3>Reminder Settings</h3>
-            <p>Interval: ${reminderSettings.interval || 'Not set'}</p>
+            <p>Scheduled Interval Breaks(Minutes): ${reminderSettings.interval || 'Not set'}</p>
             <p>Notification Types: ${(reminderSettings.notificationTypes || []).join(', ') || 'None'}</p>
             
             <h3>Health Symptoms</h3>
             <p>Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
             <p>Severity: ${JSON.stringify(healthSymptoms.severity) || 'Not set'}</p>
             
-            <h3>Daily Limit</h3>
-            <p>Daily Limit: ${dailyLimit.dailyLimit || 'Not set'}</p>
+            <h3>Daily Limit (hh:mm) </h3>
+            <p>Maximum Daily Limit(hh:mm): ${dailyLimit.dailyLimit || 'Not set'}</p>
             <p>Notify: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
         `;
 
