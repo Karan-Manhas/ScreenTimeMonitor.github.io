@@ -113,10 +113,21 @@ function setDailyLimit() {
         const dailyLimit = document.getElementById('daily-limit').value;
         const notify = document.getElementById('notify').checked;
 
+        // Convert daily limit to minutes for easier comparison
+        const [hours, minutes] = dailyLimit.split(':').map(Number);
+        const totalMinutes = (hours * 60) + minutes;
+
+        // Validate that the daily limit does not exceed 12 hours (720 minutes)
+        if (totalMinutes > 720) {
+            alert('Daily limit cannot exceed 12 hours. Please enter a valid limit.');
+            return;
+        }
+
         localStorage.setItem('dailyLimit', JSON.stringify({ dailyLimit, notify }));
         alert('Daily limit saved!');
     });
 }
+
 
 function visualCue() {
     const visualCue = document.querySelector('.visual-cue');
