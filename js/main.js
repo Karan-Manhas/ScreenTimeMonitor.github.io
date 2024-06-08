@@ -163,6 +163,7 @@ function weeklyReport() {
         });
         // Populate other report sections
         reportDiv.innerHTML += `
+            <h2>Settings Review</h2>
             <h3>Reminder Settings</h3>
             <p>Interval: ${reminderSettings.interval || 'Not set'}</p>
             <p>Notification Types: ${(reminderSettings.notificationTypes || []).join(', ') || 'None'}</p>
