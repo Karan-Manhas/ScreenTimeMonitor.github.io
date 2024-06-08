@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Call generateCharts after the DOM is fully loaded
-    generateCharts();
+    generateCharts({
+        screenTimeChart: 'Active Screen Time (hours)',
+        breakFrequencyChart: 'Number of Breaks Taken',
+        healthImpactChart: 'Severity Reduction Points'
+    });
 });
 
 function loadPage(page) {
@@ -121,8 +125,12 @@ function weeklyReport() {
 
     // Delay chart generation to ensure DOM is fully updated
     setTimeout(() => {
-        // Generate charts
-        generateCharts();
+        // Generate charts with specific y-axis titles
+        generateCharts({
+            screenTimeChart: 'Active Screen Time (hours)',
+            breakFrequencyChart: 'Number of Breaks Taken',
+            healthImpactChart: 'Severity Reduction Points'
+        });
         // Populate other report sections
         reportDiv.innerHTML += `
             <h3>Reminder Settings</h3>
@@ -140,7 +148,7 @@ function weeklyReport() {
     }, 100);
 }
 
-function generateCharts() {
+function generateCharts(yAxisTitles) {
     const screenTimeData = [4, 5, 6, 7, 3, 2, 1]; // Random data for demonstration
     const breakFrequencyData = [2, 3, 4, 3, 4, 2, 5]; // Random data for demonstration
     const healthImpactData = [1, 2, 3, 4, 2, 3, 1]; // Random data for demonstration
@@ -191,20 +199,42 @@ function generateCharts() {
         }
     };
 
-    // Define layout
-    const layout = {
+    // Define layouts with specific y-axis titles
+    const screenTimeLayout = {
         barmode: 'group',
         title: 'Weekly Report',
         xaxis: {
             title: 'Day of Week'
         },
         yaxis: {
-            title: 'Value'
+            title: yAxisTitles.screenTimeChart // Use the provided y-axis title for screen time chart
+        }
+    };
+
+    const breakFrequencyLayout = {
+        barmode: 'group',
+        title: 'Weekly Report',
+        xaxis: {
+            title: 'Day of Week'
+        },
+        yaxis: {
+            title: yAxisTitles.breakFrequencyChart // Use the provided y-axis title for break frequency chart
+        }
+    };
+
+    const healthImpactLayout = {
+        barmode: 'group',
+        title: 'Weekly Report',
+        xaxis: {
+            title: 'Day of Week'
+        },
+        yaxis: {
+            title: yAxisTitles.healthImpactChart // Use the provided y-axis title for health impact chart
         }
     };
 
     // Plot charts
-    Plotly.newPlot('screenTimeChart', [screenTimeChart], layout);
-    Plotly.newPlot('breakFrequencyChart', [breakFrequencyChart], layout);
-    Plotly.newPlot('healthImpactChart', [healthImpactChart], layout);
+    Plotly.newPlot('screenTimeChart', [screenTimeChart], screenTimeLayout);
+    Plotly.newPlot('breakFrequencyChart', [breakFrequencyChart], breakFrequencyLayout);
+    Plotly.newPlot('healthImpactChart', [healthImpactChart], healthImpactLayout);
 }
