@@ -36,10 +36,17 @@ function initPage(page) {
 
 function setupReminders() {
     document.getElementById('save-reminders').addEventListener('click', () => {
-        const interval = document.getElementById('interval').value;
+        let interval = document.getElementById('interval').value;
+        const customInterval = document.getElementById('custom-interval').value;
+        const soundAlert = document.getElementById('sound-alert').value;
         const notificationTypes = Array.from(document.querySelectorAll('input[name="notification-type"]:checked')).map(cb => cb.value);
 
-        localStorage.setItem('reminderSettings', JSON.stringify({ interval, notificationTypes }));
+        // Use custom interval if provided
+        if (customInterval && customInterval > 0 && customInterval <= 60) {
+            interval = customInterval;
+        }
+
+        localStorage.setItem('reminderSettings', JSON.stringify({ interval, soundAlert, notificationTypes }));
         alert('Reminders saved!');
     });
 }
