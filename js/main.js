@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generateCharts({
         screenTimeChart: 'Active Screen Time (hours)',
         breakFrequencyChart: 'Number of Breaks Taken',
-        healthImpactChart: 'Severity Reduction Points'
+        healthImpactChart: 'Severity Rating'
     });
 });
 
@@ -202,7 +202,7 @@ function generateCharts(yAxisTitles) {
     // Define layouts with specific y-axis titles
     const screenTimeLayout = {
         barmode: 'group',
-        title: 'Weekly Report',
+        title: 'Screen Time Weekly Report',
         xaxis: {
             title: 'Day of Week'
         },
@@ -213,7 +213,7 @@ function generateCharts(yAxisTitles) {
 
     const breakFrequencyLayout = {
         barmode: 'group',
-        title: 'Weekly Report',
+        title: 'Break Frequency Weekly Report',
         xaxis: {
             title: 'Day of Week'
         },
@@ -224,7 +224,7 @@ function generateCharts(yAxisTitles) {
 
     const healthImpactLayout = {
         barmode: 'group',
-        title: 'Weekly Report',
+        title: 'Health Rating Weekly Report',
         xaxis: {
             title: 'Day of Week'
         },
