@@ -1,22 +1,46 @@
-<h1>Log Health Symptoms</h1>
-<h2>Select all the current Health Symptoms</h2>
-<div class="checkbox-container">
-<label><input type="checkbox" name="symptom" value="eye-strain"> Eye Strain</label>
-<label><input type="checkbox" name="symptom" value="headaches"> Headaches</label>
-<label><input type="checkbox" name="symptom" value="anxiety"> Anxiety</label>
-</div>
-<br>
-<h2>Severity Slider</h2>
-<h3>Severity Slider for Eye Strain</h3>
-<label for="severity">1 being not severe at all - 10 being extremely severe:</label> <!-- Added label for severity scale -->
-<input type="range" id="severity" class="slider" min="1" max="10">
-<h3>Severity Slider for Headaches</h3>
-<input type="range" id="severity" class="slider" min="1" max="10">
-<h3>Severity Slider for Anxiety</h3>
-<input type="range" id="severity" class="slider" min="1" max="10">
-<button id="save-symptoms">Save</button>
-<nav>
-    <button data-page="set-daily-limit">Next: Set Daily Limit</button>
-    <button onclick="history.back()">Back</button> <!-- Added back button -->
-    <button data-page="weekly-report">Go to Weekly Report</button>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Health Symptoms</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Log Health Symptoms</h1>
+        <h2>Select all the current Health Symptoms</h2>
+        <div class="checkbox-container">
+            <label><input type="checkbox" name="symptom" value="eye-strain"> Eye Strain</label>
+            <label><input type="checkbox" name="symptom" value="headaches"> Headaches</label>
+            <label><input type="checkbox" name="symptom" value="anxiety"> Anxiety</label>
+        </div>
+        <br>
+        <h2>Severity Slider</h2>
+        <h3>Severity Slider for Eye Strain</h3>
+        <label for="severity-eye-strain">1 being not severe at all - 10 being extremely severe:</label> <!-- Added label for severity scale -->
+        <input type="range" id="severity-eye-strain" class="slider" min="1" max="10">
+        <div class="slider-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+        <h3>Severity Slider for Headaches</h3>
+        <label for="severity-headaches">1 being not severe at all - 10 being extremely severe:</label>
+        <input type="range" id="severity-headaches" class="slider" min="1" max="10">
+        <div class="slider-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+        <h3>Severity Slider for Anxiety</h3>
+        <label for="severity-anxiety">1 being not severe at all - 10 being extremely severe:</label>
+        <input type="range" id="severity-anxiety" class="slider" min="1" max="10">
+        <div class="slider-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+        <button id="save-symptoms">Save</button>
+        <nav>
+            <button data-page="set-daily-limit">Next: Set Daily Limit</button>
+            <button onclick="history.back()">Back</button> <!-- Added back button -->
+            <button data-page="weekly-report">Go to Weekly Report</button>
+        </nav>
+    </main>
+</body>
+</html>
