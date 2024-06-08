@@ -113,10 +113,10 @@ button:hover {
 
 .checkbox-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
 .checkbox-container label {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
