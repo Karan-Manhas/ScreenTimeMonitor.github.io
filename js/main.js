@@ -188,6 +188,8 @@ function weeklyReport() {
             <p>Notify once usage is done?: ${dailyLimit.notify ? 'Yes' : 'No'}</p>
         <nav>
     <button data-page="setup-reminders">Start Over</button>
+    <button onclick="sendEmailWithCsv()">Share</button>
+
         </nav>
         `;
 
