@@ -157,3 +157,9 @@ button:hover {
     margin-left: 0;
 }
 
+.slider-label {
+    display: block;
+    text-align: center;
+    margin-top: 5px; /* Add space above the label */
+}
+
