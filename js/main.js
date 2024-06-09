@@ -172,6 +172,10 @@ function weeklyReport() {
             breakFrequencyChart: 'Number of Breaks Taken',
             healthImpactChart: 'Severity Reduction Points'
         });
+            // This function will format the severity object into a readable string without curly braces and quotes
+        function formatSeverity(severity) {
+            return Object.entries(severity).map(([key, value]) => `${key}: ${value}`).join(', ');
+        }
         // Populate other report sections
         reportDiv.innerHTML += `
             <h2>Settings Review</h2>
@@ -181,7 +185,7 @@ function weeklyReport() {
             
             <h3>Health Symptoms</h3>
             <p>Key Symptoms: ${(healthSymptoms.symptoms || []).join(', ') || 'None'}</p>
-            <p>Severity: ${JSON.stringify(healthSymptoms.severity) || 'Not set'}</p>
+            <p>Severity: ${formatSeverity(healthSymptoms.severity) || 'Not set'}</p>
             
             <h3>Screen Usage Limit per Day </h3>
             <p>Maximum Daily Limit(hh:mm): ${dailyLimit.dailyLimit || 'Not set'}</p>
