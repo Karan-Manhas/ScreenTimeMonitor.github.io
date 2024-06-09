@@ -324,7 +324,12 @@ function sendEmailWithCsv() {
 
     // Create mailto link with subject and body
     var emailSubject = "Weekly Report Data";
-    var emailBody = "Attached is the CSV data for the weekly report.";
+    var emailBody = `Attached is the data for the weekly report.
+Screen Time Usage: ${screenTimeData.join(', ')}
+Break Frequency Data: ${breakFrequencyData.join(', ')}
+Health Impact Data: ${healthImpactData.join(', ')}
+
+Please review the attached CSV for detailed information.`;
     var mailtoLink = 'mailto:?subject=' + encodeURIComponent(emailSubject) +
                      '&body=' + encodeURIComponent(emailBody) +
                      '&attachment=' + encodedUri;
