@@ -244,6 +244,8 @@ function weeklyReport() {
         <nav>
     <button data-page="setup-reminders">Start Over</button>
     <button onclick="sendEmailWithCsv()">Share</button>
+    <button id="themeToggle" class="btn btn-secondary">Toggle Dark Mode</button>
+
 
         </nav>
         `;
@@ -423,4 +425,21 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Screen time limit saved successfully!");
       }
     });
+});
+
+
+// dark mode
+
+document.addEventListener("DOMContentLoaded", function () {
+  const themeToggleButton = document.getElementById("themeToggle");
+  const bodyElement = document.body;
+
+  themeToggleButton.addEventListener("click", () => {
+    const currentTheme = bodyElement.getAttribute("data-bs-theme");
+    if (currentTheme === "dark") {
+      bodyElement.setAttribute("data-bs-theme", "light");
+    } else {
+      bodyElement.setAttribute("data-bs-theme", "dark");
+    }
+  });
 });
