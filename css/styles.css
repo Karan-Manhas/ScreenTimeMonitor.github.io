@@ -165,7 +165,9 @@ button:hover {
 
 .slider-container {
     margin: 20px 0;
-    text-align: center; /* Centers the text and slider */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will align the sliders and labels centrally */
 }
 
 .slider-container h3 {
@@ -174,10 +176,12 @@ button:hover {
 
 .slider {
     width: 80%; /* Adjust the width as needed */
-    margin: auto; /* This will center the slider in the container */
+    margin: 0 auto; /* This centers the slider horizontally within the container */
 }
 
 .slider + label {
     display: block; /* Ensures the label appears on a new line */
+    text-align: center; /* Centers the text of the label */
     margin-top: 10px; /* Space above the label */
+    width: 100%; /* Ensures the label extends across the width of the container */
 }
