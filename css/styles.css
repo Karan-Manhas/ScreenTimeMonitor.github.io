@@ -28,6 +28,8 @@ h2{
     color: #6A9DD5;
     font-weight: 600;
     margin-bottom: 10px;
+    text-align: center; /* Center text horizontally */
+
 }
 
 /* Form elements */
