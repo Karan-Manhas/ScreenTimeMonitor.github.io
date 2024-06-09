@@ -409,18 +409,20 @@ Please review the attached CSV for detailed information.`;
 
 // time screen limit logic
 
-document
-  .getElementById("save-daily-limit")
-  .addEventListener("click", function () {
-    const inputTime = document.getElementById("daily-limit").value;
-    const timeParts = inputTime.split(":");
-    const hours = parseInt(timeParts[0], 10);
-    const minutes = parseInt(timeParts[1], 10);
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("save-daily-limit")
+    .addEventListener("click", function () {
+      const inputTime = document.getElementById("daily-limit").value;
+      const timeParts = inputTime.split(":");
+      const hours = parseInt(timeParts[0], 10);
+      const minutes = parseInt(timeParts[1], 10);
 
-    if (hours > 10 || (hours === 10 && minutes > 0)) {
-      alert("Please set a time less than or equal to 10 hours.");
-    } else {
-      // Proceed with your logic to save this data or handle it
-      alert("Screen time limit saved successfully!");
-    }
-  });
+      if (hours > 10 || (hours === 10 && minutes > 0)) {
+        alert("Please set a time less than or equal to 10 hours.");
+      } else {
+        // Proceed with your logic to save this data or handle it
+        alert("Screen time limit saved successfully!");
+      }
+    });
+});
