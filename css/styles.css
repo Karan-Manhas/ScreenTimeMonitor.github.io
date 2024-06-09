@@ -32,6 +32,10 @@ h2{
 
 }
 
+h3{
+    text-align: center; /* Center text horizontally */
+}
+
 /* Form elements */
 input, select, button, .slider {
     display: block;
