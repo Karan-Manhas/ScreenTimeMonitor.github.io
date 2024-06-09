@@ -291,3 +291,42 @@ function generateCharts(yAxisTitles) {
     Plotly.newPlot('breakFrequencyChart', [breakFrequencyChart], breakFrequencyLayout);
     Plotly.newPlot('healthImpactChart', [healthImpactChart], healthImpactLayout);
 }
+
+
+function sendEmailWithCsv() {
+    const screenTimeData = [4, 5, 6, 7, 3, 2, 1]; // Random data for demonstration
+    const breakFrequencyData = [2, 3, 4, 3, 4, 2, 5]; // Random data for demonstration
+    const healthImpactData = [1, 2, 3, 4, 2, 3, 1]; // Random data for demonstration
+    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    // Function to generate CSV from data
+    function generateCsvData(dataArray, header) {
+        let csvContent = header + "\n";
+        dataArray.forEach((value, index) => {
+            csvContent += `${daysOfWeek[index]},${value}\n`;
+        });
+        return csvContent;
+    }
+
+    // Generate CSV content for each chart
+    var csvScreenTime = generateCsvData(screenTimeData, "Day,Screen Time");
+    var csvBreakFrequency = generateCsvData(breakFrequencyData, "Day,Break Frequency");
+    var csvHealthImpact = generateCsvData(healthImpactData, "Day,Health Impact");
+
+    // Combine all CSV data
+    var combinedCsv = "Screen Time Usage\n" + csvScreenTime + 
+                      "\nBreak Frequency\n" + csvBreakFrequency +
+                      "\nHealth Impact\n" + csvHealthImpact;
+
+    // Encode combined CSV data
+    var encodedUri = encodeURI('data:text/csv;charset=utf-8,' + combinedCsv);
+
+    // Create mailto link with subject and body
+    var emailSubject = "Weekly Report Data";
+    var emailBody = "Attached is the CSV data for the weekly report.";
+    var mailtoLink = 'mailto:?subject=' + encodeURIComponent(emailSubject) +
+                     '&body=' + encodeURIComponent(emailBody) +
+                     '&attachment=' + encodedUri;
+
+    // Open the mailto link in a new window/tab
+    window.open(mailtoLink);
+}
