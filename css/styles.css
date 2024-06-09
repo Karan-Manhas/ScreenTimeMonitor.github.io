@@ -120,21 +120,12 @@ button:hover {
 .checkbox-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
+    align-items: center;
     justify-content: center;
 }
 
-
-/* Style each checkbox with its label */
-.checkbox-label {
-    display: flex;
-    align-items: center; /* Align checkbox and label text vertically */
-    margin-bottom: 10px; /* Space between each checkbox */
-}
-
-/* Specific styles for the checkbox */
-.checkbox-label input[type="checkbox"] {
-    margin-right: 10px; /* Space between the checkbox and the label text */
+.checkbox-container label {
+    margin-bottom: 10px;
 }
 
 
@@ -159,3 +150,4 @@ button:hover {
 .slider {
     margin-left: 0;
 }
+
