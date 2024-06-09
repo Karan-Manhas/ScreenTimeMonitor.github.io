@@ -410,9 +410,7 @@ Please review the attached CSV for detailed information.`;
 // time screen limit logic
 
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("save-daily-limit")
-    .addEventListener("click", function () {
+  document.getElementById("save-daily-limit").addEventListener("click", function () {
       const inputTime = document.getElementById("daily-limit").value;
       const timeParts = inputTime.split(":");
       const hours = parseInt(timeParts[0], 10);
