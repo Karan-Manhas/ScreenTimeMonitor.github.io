@@ -242,6 +242,7 @@ function generateCharts(yAxisTitles) {
         y: healthImpactData,
         type: 'bar',
         name: 'Health Impact (severity)',
+        hoverinfo: 'y+name', // test
         marker: {
             color: 'rgba(255, 206, 86, 0.2)',
             line: {
