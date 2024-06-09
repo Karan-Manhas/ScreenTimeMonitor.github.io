@@ -231,12 +231,12 @@ function weeklyReport() {
             <p>Key Symptoms: ${
               (healthSymptoms.symptoms || []).join(", ") || "None"
             }</p>
-            <p>Severity: ${
+            <p>Severity Rating (10 being the worst): ${
               formatSeverity(healthSymptoms.severity) || "Not set"
             }</p>
             
             <h3>Screen Usage Limit per Day </h3>
-            <p>Maximum Daily Limit(hh:mm): ${
+            <p>Maximum Daily Limit (hh:mm): ${
               dailyLimit.dailyLimit || "Not set"
             }</p>
             <p>Notify once usage is done?: ${
