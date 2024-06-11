@@ -104,26 +104,28 @@ function logHealthSymptoms() {
       "healthSymptoms",
       JSON.stringify({ symptoms, severity })
     );
-    provideSuggestions(symptoms);
-    alert("Symptoms logged!");
+
+    const suggestions = provideSuggestions(symptoms);
+    alert("Symptoms logged! Suggestions: " + suggestions);
   });
 }
+
 
 function provideSuggestions(symptoms) {
   let suggestions = "";
 
-  if (symptoms.includes("headaches")) {
+  if (
+    symptoms.includes("anxiety") &&
+    symptoms.includes("eye-strain") &&
+    symptoms.includes("headaches")
+  ) {
+    suggestions =
+      "Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state negatively recently.";
+  } else if (symptoms.includes("headaches")) {
     suggestions = "Try increasing screen limit this week.";
   } else if (symptoms.includes("eye-strain")) {
     suggestions =
       "Try using Blue light glasses to reduce eye strain, this should help alleviate the severity.";
-  } else if (
-    symptoms.includes("anxiety") &&
-    !symptoms.includes("eye-strain") &&
-    !symptoms.includes("headaches")
-  ) {
-    suggestions =
-      "Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state negatively recently.";
   } else if (symptoms.includes("anxiety")) {
     suggestions =
       "Suggest doing the 20/20/20 test. Every 20 minutes or so, look into the distance (about 20 feet) for 20 seconds.";
@@ -131,6 +133,7 @@ function provideSuggestions(symptoms) {
 
   return suggestions;
 }
+
 
 
 function setDailyLimit() {
