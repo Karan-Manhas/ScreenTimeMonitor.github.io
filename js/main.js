@@ -112,26 +112,11 @@ function logHealthSymptoms() {
 function provideSuggestions(symptoms) {
   let suggestions = "";
 
-  if (
-    symptoms.includes("headaches") &&
-    symptoms.includes("anxiety") &&
-    symptoms.includes("eye-strain")
-  ) {
+  if (symptoms.includes("headaches")) {
     suggestions = "Try increasing screen limit this week.";
-  } else if (
-    symptoms.includes("eye-strain") &&
-    !symptoms.includes("headaches") &&
-    !symptoms.includes("anxiety")
-  ) {
+  } else if (symptoms.includes("eye-strain")) {
     suggestions =
       "Try using Blue light glasses to reduce eye strain, this should help alleviate the severity.";
-  } else if (
-    symptoms.includes("headaches") &&
-    !symptoms.includes("eye-strain") &&
-    !symptoms.includes("anxiety")
-  ) {
-    suggestions =
-      "Suggest doing the 20/20/20 test. Every 20 minutes or so, look into the distance (about 20 feet) for 20 seconds.";
   } else if (
     symptoms.includes("anxiety") &&
     !symptoms.includes("eye-strain") &&
@@ -139,10 +124,14 @@ function provideSuggestions(symptoms) {
   ) {
     suggestions =
       "Suggest a Digital Detox by auditing social media consumption and removing anything that has influenced mental state negatively recently.";
+  } else if (symptoms.includes("anxiety")) {
+    suggestions =
+      "Suggest doing the 20/20/20 test. Every 20 minutes or so, look into the distance (about 20 feet) for 20 seconds.";
   }
 
   return suggestions;
 }
+
 
 function setDailyLimit() {
   document.getElementById("save-daily-limit").addEventListener("click", () => {
